@@ -21,7 +21,7 @@ const ApiRoutes = {
     },
     MARKDOWNFINDBYID:{
         path:"/user",
-        authenticate:false
+        authenticate:true
     },
     CREATEMARKDOWN:{
         path:"/user/createMarkdown",
@@ -29,11 +29,11 @@ const ApiRoutes = {
     },
     UPDATEMARKDOWN:{
         path:"/user",
-        authenticate:false
+        authenticate:true
     },
     DELETEMARKDOWN:{
         path:"/user",
-        authenticate:false
+        authenticate:true
     },
     COUNTALL:{
         path:"/user",
