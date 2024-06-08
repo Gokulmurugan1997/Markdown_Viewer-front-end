@@ -34,9 +34,9 @@ useEffect(()=>{
 
   </div>
 
-    <Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Group className="mb-3" controlId="formBasicEmail" action="/action_page.php" method="post">
       <Form.Label>New Password</Form.Label>
-      <Form.Control type="password" placeholder="Enter New password" name='password' value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
+      <Form.Control type="password" placeholder="Enter New password" name='password' value={password} onChange={(e)=>{setPassword(e.target.value)}} required/>
     </Form.Group>
 
     <Button variant="primary" type="submit" onClick={handleMail}>

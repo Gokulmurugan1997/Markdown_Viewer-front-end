@@ -21,7 +21,7 @@ function ForgetPassword() {
       
             
         } catch (error) {
-            toast.error(error.response.data.message || error.message)
+            toast.error(error.message)
         }
     }
 
@@ -33,16 +33,16 @@ function ForgetPassword() {
 
     <Form.Group className="mb-3" controlId="formBasicEmail">
       <Form.Label>Email address</Form.Label>
-      <Form.Control type="email" placeholder="Enter email" name='email' value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
+      <Form.Control type="email" placeholder="Enter email" name='email' value={email} onChange={(e)=>{setEmail(e.target.value)}} required/>
       <Form.Text className="text-muted">
         We'll never share your email with anyone else.
       </Form.Text>
     </Form.Group>
-
+   
     <Button variant="primary" type="submit" onClick={handleMail}>
       Submit
     </Button>
-
+    
   </div>
 }
 

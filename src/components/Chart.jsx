@@ -17,18 +17,21 @@ function Chart() {
 
     let getAllData = async ()=>{
         try {
-            let res = await AxiosService.get(ApiRoutes.COUNTALL.path)
-            if(res){
+            let res = await AxiosService.get(ApiRoutes.COUNTALL.path,{
+              authenticate:ApiRoutes.COUNTALL.authenticate
+            })
                setData({
                 totalMarkdowns:res.data.totalCount,
                 totalUsers:res.data.totalUsers
             })
-            }
             
         } catch (error) {
-            toast.error(error)
+          toast.error(error.response.data.message || error.message)
+          if(error.response.data.message=="token expired"){
+            navigate('/login')
         }
     }
+  }
     useEffect(()=>{
         getAllData()
     }, [])

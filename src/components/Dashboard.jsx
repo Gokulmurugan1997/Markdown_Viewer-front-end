@@ -11,15 +11,19 @@ function Dashboard() {
     let navigate = useNavigate()
     const getData = async()=>{
         try {
-            let res = await AxiosService.get(ApiRoutes.MARKDOWNLIST.path)
-            
+            let res = await AxiosService.get(ApiRoutes.MARKDOWNLIST.path,{
+                authenticate:ApiRoutes.MARKDOWNLIST.authenticate
+            })
                 setData(res.data)
-            
+
         } catch (error) {
             toast.error(error.response.data.message || error.message)
+            if(error.response.data.message=="token expired"){
+                navigate('/login')
         }
             
     }
+}
     useEffect(()=>{
         getData()
     },[])

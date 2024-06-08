@@ -13,15 +13,19 @@ function CreateMarkdown() {
     const createMarkdown = async () =>{
       
         try {
-            let res = await AxiosService.post(ApiRoutes.CREATEMARKDOWN.path,{content:newMarkdownContent})
+            let res = await AxiosService.post(ApiRoutes.CREATEMARKDOWN.path,{content:newMarkdownContent},
+              {authenticate:ApiRoutes.CREATEMARKDOWN.authenticate}
+            )
             if(res)
               toast.success("markdown created")
             navigate('/home')
         } catch (error) {
-          
-            toast.error(error)
+          toast.error(error.response.data.message || error.message)
+            if(error.response.data.message=="token expired"){
+              navigate('/login')
         }
     }
+  }
 
 return <div className="container-fluid">
   <Button onClick={()=>navigate('/home')}>Back</Button>
@@ -36,7 +40,7 @@ return <div className="container-fluid">
               rows="20"
               value={newMarkdownContent}
               onChange={(e) =>{setNewMarkdownContent(e.target.value)}}
-              
+              required
               className="form-control"
             />
             <Button onClick={createMarkdown} className="btn btn-primary mt-3">

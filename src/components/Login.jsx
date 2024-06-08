@@ -23,6 +23,7 @@ function Login() {
                 let res = await AxiosService.post(ApiRoutes.LOGIN.path,data, {
                     authenticate:ApiRoutes.LOGIN.authenticate
                 })
+                
                 if(res.status===200){
                     sessionStorage.setItem('token',res.data.token)
                     sessionStorage.setItem('role',res.data.role )
@@ -44,10 +45,10 @@ function Login() {
     <h1>Login</h1>
     <p>New User? don't worry <Link to='/SignUp'>Sign Up here</Link></p>
     </div>
-  <Form onSubmit={handleLogin}>
+  <Form onSubmit={handleLogin} action="/action_page.php" method="post">
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" name='email'/>
+        <Form.Control type="email" placeholder="Enter email" name='email' required/>
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>
@@ -55,7 +56,7 @@ function Login() {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" name='password'/>
+        <Form.Control type="password" placeholder="Password" name='password' required/>
       </Form.Group>
       
       <Button variant="primary" type="submit">

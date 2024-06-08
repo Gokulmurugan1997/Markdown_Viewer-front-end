@@ -44,14 +44,14 @@ function SignUp() {
     <div className='login_header'>
     <h1>Signin</h1>
     </div>
-  <Form onSubmit={handleSignin}>
+  <Form onSubmit={handleSignin} action="/action_page.php" method="post">
   <Form.Group className="mb-3">
         <Form.Label>Name</Form.Label>
-        <Form.Control type="Name" placeholder="Name" name='name'/>
+        <Form.Control type="Name" placeholder="Name" name='name' required/>
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" name='email'/>
+        <Form.Control type="email" placeholder="Enter email" name='email' required/>
         <Form.Text className="text-muted">
           We'll never share your email with anyone else.
         </Form.Text>
@@ -59,7 +59,7 @@ function SignUp() {
 
       <Form.Group className="mb-3">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" name='password'/>
+        <Form.Control type="password" placeholder="Password" name='password' required/>
       </Form.Group>
       
       <Button variant="primary" type="submit">
