@@ -40,7 +40,9 @@ function Login() {
         }
     }
 
-    return <div  className='login_wrapper'>
+    return <div className="container-1">
+      <div className="img"></div>
+    <div  className='login_wrapper'>
     <div className='login_header'>
     <h1>Login</h1>
     <p>New User? don't worry <Link to='/SignUp'>Sign Up here</Link></p>
@@ -65,6 +67,7 @@ function Login() {
        
     </Form>
 
+    </div>
     </div>
 }
 
